@@ -1,751 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nidhish Gautam - Resume</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Professional resume website template." />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <title>Nidhish Gautam — Resume</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f1e8;
+      --bg2: #efe7d6;
+      --surface: rgba(255, 255, 255, 0.92);
+      --surface2: rgba(255, 255, 255, 0.86);
+      --text: #0f172a;
+      --muted: #475569;
+      --border: rgba(15, 23, 42, 0.1);
+      --shadow: 0 30px 80px rgba(2, 6, 23, 0.12);
+      --brand: #7c6f57;
+      --brand2: #6a5f4a;
+      --chip: rgba(124, 111, 87, 0.14);
+      --chipBorder: rgba(124, 111, 87, 0.22);
+      --ring: rgba(124, 111, 87, 0.35);
+      --radius: 20px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f0c29 0%, #24243e 25%, #302b63 50%, #0f0c29 75%, #24243e 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            color: #333;
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
-            overflow-x: hidden;
-        }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      line-height: 1.5;
+      background:
+        radial-gradient(1200px 900px at 10% 0%, rgba(255, 255, 255, 0.55), transparent 60%),
+        radial-gradient(1000px 800px at 100% 10%, rgba(255, 255, 255, 0.35), transparent 60%),
+        repeating-linear-gradient(0deg, rgba(124, 111, 87, 0.028) 0 1px, transparent 1px 7px),
+        repeating-linear-gradient(90deg, rgba(124, 111, 87, 0.02) 0 1px, transparent 1px 9px),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      padding: 24px;
+    }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+      border-radius: 10px;
+    }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 
-                0 25px 80px rgba(0,0,0,0.4),
-                0 0 0 1px rgba(255,255,255,0.1),
-                inset 0 1px 0 rgba(255,255,255,0.2);
-            animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-        }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      overflow: clip;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background:
+        radial-gradient(900px 600px at 20% 0%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.55)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.35));
+    }
 
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-        }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--text);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 200% 200%;
-            animation: headerGradient 8s ease infinite;
-            color: white;
-            padding: 60px 50px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55));
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      box-shadow: 0 12px 30px rgba(2, 6, 23, 0.10);
+      flex: 0 0 auto;
+    }
 
-        @keyframes headerGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    .brand h1 {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
-            animation: pulse 8s ease-in-out infinite;
-        }
+    .brand p {
+      margin: 0;
+      font-size: 13px;
+      opacity: 0.85;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -30%;
-            width: 160%;
-            height: 160%;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-            animation: pulse 12s ease-in-out infinite reverse;
-        }
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.2) rotate(180deg); }
-        }
+    .btn {
+      appearance: none;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: rgba(2, 6, 23, 0.02);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
+    .btn:hover { transform: translateY(-1px); background: rgba(2, 6, 23, 0.04); border-color: rgba(124, 111, 87, 0.28); }
+    .btn.primary {
+      background: rgba(2, 6, 23, 0.06);
+      border-color: rgba(15, 23, 42, 0.14);
+      color: var(--text);
+    }
 
-        h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #ffffff, #f0f0f0, #ffffff);
-            background-size: 200% 200%;
-            animation: shimmer 3s ease-in-out infinite;
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
+    .sheet {
+      background: var(--surface);
+      backdrop-filter: blur(18px);
+    }
 
-        @keyframes shimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    .hero {
+      padding: 42px 36px 26px;
+      border-bottom: 1px solid var(--border);
+    }
 
-        .tagline {
-            font-size: 1.3em;
-            opacity: 0.95;
-            font-weight: 400;
-            margin-bottom: 25px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            letter-spacing: 0.5px;
-        }
+    .hero h2 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-            font-size: 0.95em;
-        }
+    .hero .headline {
+      margin-top: 10px;
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            padding: 12px 18px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            position: relative;
-            overflow: hidden;
-        }
+    .meta {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-        .contact-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
 
-        .contact-item:hover::before {
-            left: 100%;
-        }
+    .pill b { color: var(--text); font-weight: 650; }
+    .pill code { font-family: var(--mono); font-size: 12px; }
 
-        .contact-item:hover {
-            transform: translateY(-4px) scale(1.05);
-            background: rgba(255,255,255,0.25);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            border-color: rgba(255,255,255,0.4);
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      padding: 26px 36px 40px;
+    }
 
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-        }
+    .card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+    }
 
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
 
-        .content {
-            padding: 60px 50px;
-            position: relative;
-        }
+    .item {
+      padding: 14px 14px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      background: rgba(255, 255, 255, 0.72);
+      transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+    }
 
-        .content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
-        }
+    .item:hover { transform: translateY(-2px); box-shadow: 0 18px 60px rgba(2, 6, 23, 0.10); border-color: rgba(124, 111, 87, 0.28); }
+    .item + .item { margin-top: 12px; }
 
-        section {
-            margin-bottom: 50px;
-            animation: fadeInUp 1s ease-out;
-            animation-fill-mode: both;
-        }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-        section:nth-child(1) { animation-delay: 0.1s; }
-        section:nth-child(2) { animation-delay: 0.2s; }
-        section:nth-child(3) { animation-delay: 0.3s; }
-        section:nth-child(4) { animation-delay: 0.4s; }
-        section:nth-child(5) { animation-delay: 0.5s; }
-        section:nth-child(6) { animation-delay: 0.6s; }
+    .role { font-weight: 700; letter-spacing: -0.01em; }
+    .place { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+    .dates {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(2, 6, 23, 0.04);
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
 
-        @keyframes fadeInUp {
-            from { 
-                opacity: 0; 
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0);
-            }
-        }
+    .bullets {
+      margin: 10px 0 0;
+      padding: 0 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-        h2 {
-            color: #2c3e50;
-            font-size: 2em;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            font-weight: 600;
-            position: relative;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 0.5px;
-        }
+    .bullets li { margin: 6px 0; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid var(--chipBorder);
+      color: rgba(72, 61, 42, 0.95);
+      font-size: 13px;
+      font-weight: 650;
+    }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-        }
+    .projectsGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      align-items: start;
+    }
 
-        h2::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(102, 126, 234, 0.3), transparent);
-        }
+    .projectCard {
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.78);
+      overflow: clip;
+      transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+    }
 
-        .about p {
-            font-size: 1.1em;
-            color: #4a5568;
-            margin-bottom: 20px;
-            text-align: justify;
-            line-height: 1.8;
-            font-weight: 400;
-        }
+    .projectCard:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 60px rgba(2, 6, 23, 0.10);
+      border-color: rgba(124, 111, 87, 0.28);
+    }
 
-        .experience-item, .education-item, .project-item {
-            margin-bottom: 35px;
-            padding: 30px;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            border-radius: 16px;
-            border-left: 5px solid #667eea;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            position: relative;
-            overflow: hidden;
-        }
+    .projectThumb {
+      aspect-ratio: 16 / 9;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      background:
+        radial-gradient(900px 400px at 20% 0%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2)),
+        repeating-linear-gradient(0deg, rgba(124, 111, 87, 0.03) 0 1px, transparent 1px 7px),
+        repeating-linear-gradient(90deg, rgba(124, 111, 87, 0.02) 0 1px, transparent 1px 9px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.25));
+      display: grid;
+      place-items: center;
+      color: rgba(71, 85, 105, 0.95);
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
 
-        .experience-item::before, .education-item::before, .project-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
+    .projectThumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-        .experience-item:hover::before, .education-item:hover::before, .project-item:hover::before {
-            transform: scaleX(1);
-        }
+    .projectBody { padding: 14px 14px 12px; }
+    .projectTitle { margin: 0; font-size: 15px; letter-spacing: -0.01em; }
+    .projectNote {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      display: block;
+      overflow: visible;
+    }
+    .projectMeta { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .projectLink {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: rgba(2, 6, 23, 0.02);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 650;
+      transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+    }
+    .projectLink:hover { background: rgba(2, 6, 23, 0.04); border-color: rgba(124, 111, 87, 0.28); transform: translateY(-1px); }
 
-        .experience-item:hover, .education-item:hover, .project-item:hover {
-            transform: translateX(12px) translateY(-4px);
-            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.15);
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            border-left-color: #764ba2;
-        }
+    .twoCol { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .mini { display: grid; gap: 10px; }
 
-        .job-title, .degree, .project-title {
-            font-size: 1.4em;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 600;
-            margin-bottom: 8px;
-            letter-spacing: 0.3px;
-        }
+    .kv {
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
 
-        .company, .school {
-            font-size: 1.1em;
-            color: #4a5568;
-            font-weight: 500;
-            margin-bottom: 8px;
-            letter-spacing: 0.2px;
-        }
+    .kv .line { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .kv .k { font-weight: 700; color: var(--text); }
 
-        .date {
-            color: #718096;
-            font-style: italic;
-            margin-bottom: 18px;
-            font-size: 0.95em;
-            font-weight: 400;
-        }
+    .footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      backdrop-filter: blur(14px);
+      font-size: 13px;
+    }
 
-        .description {
-            color: #4a5568;
-            line-height: 1.8;
-            font-weight: 400;
-        }
+    .footer code { font-family: var(--mono); font-size: 12px; }
 
-        .description ul {
-            margin-left: 25px;
-            margin-top: 15px;
-        }
+    @media (max-width: 920px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: 36px 18px 22px; }
+      .grid { padding: 22px 18px 34px; }
+    }
 
-        .description li {
-            margin-bottom: 12px;
-            color: #4a5568;
-            position: relative;
-        }
-
-        .description li::marker {
-            color: #667eea;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .skill-category {
-            margin-bottom: 35px;
-        }
-
-        .skill-category-title {
-            font-size: 1.2em;
-            color: #2d3748;
-            font-weight: 600;
-            margin-bottom: 15px;
-            letter-spacing: 0.3px;
-            position: relative;
-            padding-left: 15px;
-        }
-
-        .skill-category-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-        }
-
-        .skill-item {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: 500;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: default;
-            font-size: 0.9em;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .skill-item:hover::before {
-            left: 100%;
-        }
-
-        .skill-item:hover {
-            background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
-            transform: translateY(-6px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .achievements-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .achievements-list li {
-            padding: 18px 0;
-            border-bottom: 1px solid #e2e8f0;
-            color: #4a5568;
-            position: relative;
-            padding-left: 30px;
-            transition: all 0.3s ease;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .achievements-list li:last-child {
-            border-bottom: none;
-        }
-
-        .achievements-list li::before {
-            content: "✦";
-            position: absolute;
-            left: 0;
-            top: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: bold;
-            font-size: 1.3em;
-            animation: sparkle 2s ease-in-out infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-            50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
-        }
-
-        .achievements-list li:hover {
-            color: #2d3748;
-            transform: translateX(8px);
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-            
-            .container {
-                border-radius: 20px;
-            }
-            
-            h1 {
-                font-size: 2.2em;
-                letter-spacing: 1px;
-            }
-            
-            .tagline {
-                font-size: 1.1em;
-            }
-            
-            .header {
-                padding: 40px 30px;
-            }
-            
-            .content {
-                padding: 40px 30px;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .contact-item {
-                padding: 10px 15px;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 12px;
-            }
-
-            .experience-item, .education-item, .project-item {
-                padding: 25px 20px;
-            }
-
-            h2 {
-                font-size: 1.6em;
-            }
-
-            .job-title, .degree, .project-title {
-                font-size: 1.2em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8em;
-            }
-            
-            .header {
-                padding: 30px 20px;
-            }
-            
-            .content {
-                padding: 30px 20px;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            }
-        }
-    </style>
+    @media print {
+      body { background: white; padding: 0; }
+      .wrap { box-shadow: none; border: none; }
+      .topbar, .footer { display: none; }
+      .sheet { background: white; }
+      .card { background: white; }
+      .item { background: white; box-shadow: none; }
+      a { text-decoration: none; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="header-content">
-                <h1>NIDHISH GAUTAM</h1>
-                <p class="tagline">Senior Software Engineer | AI/ML Specialist | MS in Computer Engineering (AI Focus)</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span>📧</span>
-                        <a href="mailto:g97.nidhish@gmail.com">g97.nidhish@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>📱</span>
-                        <span>+1 (929) 331-7117</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>💻</span>
-                        <a href="https://github.com/nidhish1" target="_blank">Github: nidhish1</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>🔗</span>
-                        <a href="https://linkedin.com/in/nidhish-g-ba90aa1a3" target="_blank">LinkedIn</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>📍</span>
-                        <span>Brooklyn, NY 11216</span>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <div class="content">
-            <section class="about">
-                <h2>Professional Summary</h2>
-                <p>Senior Software Engineer with 5+ years of experience building scalable systems, AI-powered platforms, and payment infrastructure. Currently pursuing MS in Computer Engineering with a focus on Artificial Intelligence at NYU. Demonstrated expertise in developing large-scale distributed systems, implementing LLM-based solutions, and architecting high-throughput real-time data pipelines. Track record of leading technical initiatives at high-growth startups including YC-backed companies, processing millions of daily transactions, and delivering production-grade AI systems.</p>
-            </section>
-
-            <section class="education">
-                <h2>Education</h2>
-                
-                <div class="education-item">
-                    <div class="degree">Master of Science in Computer Engineering</div>
-                    <div class="school">New York University, New York</div>
-                    <div class="date">August 2025 - Present</div>
-                    <div class="description">
-                        Focus: Artificial Intelligence
-                    </div>
-                </div>
-
-                <div class="education-item">
-                    <div class="degree">Bachelor of Technology in Computer Science</div>
-                    <div class="school">Vellore Institute of Technology, Vellore, India</div>
-                    <div class="date">June 2016 - May 2020</div>
-                    <div class="description">
-                        GPA: 3.6/4.0
-                    </div>
-                </div>
-            </section>
-
-            <section class="experience">
-                <h2>Professional Experience</h2>
-                
-                <div class="experience-item">
-                    <div class="job-title">Senior Software Engineer</div>
-                    <div class="company">Mudrex (YC 2019) - Remote</div>
-                    <div class="date">June 2024 - September 2025</div>
-                    <div class="description">
-                        <ul>
-                            <li>Built "Mudrex AI," an intelligent portfolio and coin analysis platform integrating RAG and a multi-agent LLM system where autonomous agents with distinct roles (data retrieval, insight generation, validation) collaborate through LangGraph and a custom agent orchestration layer.</li>
-                            <li>Built a scalable, fault-tolerant pricing infrastructure streaming 1-second tick data for 1,000+ assets and 50K+ realtime users, supporting live charting and analytics on TradingView.</li>
-                            <li>Built "WaaS," an internal payment infrastructure on Solana supporting secure wallet key lifecycle management, multi-signature transaction orchestration, and automated on-chain settlement workflows.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="job-title">Senior Software Engineer</div>
-                    <div class="company">Swiggy, India</div>
-                    <div class="date">September 2023 - April 2024</div>
-                    <div class="description">
-                        <ul>
-                            <li>Worked on the payments system of India's largest food ordering platform, processing over 1.1M daily transactions, managed by a 5-member development team, and implemented robust handling of high-volume edge cases to minimize failures and ensure seamless payment experience.</li>
-                            <li>Executed a monumental, zero-downtime migration from RDS to DynamoDB—an unconventional yet strategic shift for payment systems—to evenly distribute workloads across peak hours through efficient partitioning, denormalized data models, and optimized access patterns for large-scale transactions.</li>
-                            <li>Built an RL-driven system to optimize fund movements across multiple bank, escrow, and refund accounts, improving efficiency and accuracy in accounting and settlements that reduced manual efforts by 80%.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="job-title">Associate Manager & Software Engineer</div>
-                    <div class="company">KreditBee, India</div>
-                    <div class="date">November 2020 - August 2023</div>
-                    <div class="description">
-                        <ul>
-                            <li>Developed a Loan Error Detection Module for KreditBee that automatically identifies anomalies in loan processing using rule-based and statistical methods, enhancing accuracy, reducing manual intervention, and improving overall operational reliability by multiple folds.</li>
-                            <li>Developed a Key Rotation and Hardening System for custodial and non-custodial accounts, automating secure key rotation and mitigating risks from compromise or insider threats.</li>
-                            <li>Integrated HSM/cloud KMS, HD key derivation, multisig/threshold signatures, and Kafka-based audit logging for verifiable, tamper-resistant security workflows.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="projects">
-                <h2>Research Projects</h2>
-                
-                <div class="project-item">
-                    <div class="project-title">SimHub Infrastructure</div>
-                    <div class="company">Volkswagen Germany Team</div>
-                    <div class="description">
-                        Virtual Machine Orchestration Platform for Simulation Workloads. Designed and implemented infrastructure to manage compute-intensive simulation environments for automotive testing and validation.
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-title">Adversarial Attack Modeling & Mitigation</div>
-                    <div class="company">Research Project</div>
-                    <div class="description">
-                        Bipartite Transition Structures for Blockchain-Enabled Critical Infrastructure. Investigated security vulnerabilities and defense mechanisms for distributed systems in critical infrastructure contexts.
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-title">Cross-chain Bridge</div>
-                    <div class="company">Blockchain Development</div>
-                    <div class="description">
-                        Built a secure NEAR–Ethereum bridge enabling atomic token transfers. Implemented cryptographic protocols to ensure trustless, secure cross-chain asset movement between heterogeneous blockchain networks.
-                    </div>
-                </div>
-            </section>
-
-            <section class="skills">
-                <h2>Technical Skills</h2>
-                
-                <div class="skill-category">
-                    <div class="skill-category-title">LLM & AI Engineering</div>
-                    <div class="skills-grid">
-                        <div class="skill-item">OpenAI API</div>
-                        <div class="skill-item">LangChain</div>
-                        <div class="skill-item">LangGraph</div>
-                        <div class="skill-item">LlamaIndex</div>
-                        <div class="skill-item">Qdrant</div>
-                        <div class="skill-item">Pinecone</div>
-                        <div class="skill-item">DSPy</div>
-                        <div class="skill-item">PEFT</div>
-                        <div class="skill-item">LoRA</div>
-                        <div class="skill-item">RAGs</div>
-                        <div class="skill-item">Transformers</div>
-                        <div class="skill-item">GPT</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-category-title">ML & Data Science</div>
-                    <div class="skills-grid">
-                        <div class="skill-item">PyTorch</div>
-                        <div class="skill-item">TensorFlow</div>
-                        <div class="skill-item">Scikit-learn</div>
-                        <div class="skill-item">XGBoost</div>
-                        <div class="skill-item">LightGBM</div>
-                        <div class="skill-item">Pandas</div>
-                        <div class="skill-item">NumPy</div>
-                        <div class="skill-item">Matplotlib</div>
-                        <div class="skill-item">Seaborn</div>
-                        <div class="skill-item">Plotly</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-category-title">Software & Cloud Engineering</div>
-                    <div class="skills-grid">
-                        <div class="skill-item">Go</div>
-                        <div class="skill-item">Python</div>
-                        <div class="skill-item">FastAPI</div>
-                        <div class="skill-item">Kafka</div>
-                        <div class="skill-item">Spark</div>
-                        <div class="skill-item">Docker</div>
-                        <div class="skill-item">Kubernetes</div>
-                        <div class="skill-item">AWS</div>
-                        <div class="skill-item">GCP</div>
-                        <div class="skill-item">Azure</div>
-                        <div class="skill-item">SQL</div>
-                        <div class="skill-item">BigQuery</div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="achievements">
-                <h2>Achievements & Leadership</h2>
-                <ul class="achievements-list">
-                    <li>ISTE College Club Technical Head - Led technical initiatives and mentored students in emerging technologies</li>
-                    <li>National Science Olympiad Medalist - Awarded medals in competitive national-level science competitions</li>
-                    <li>Cricket Championships - Competed and won in inter-collegiate cricket tournaments</li>
-                    <li>Himalayan Mountaineering - Successfully completed 6000+ meter high-altitude expedition</li>
-                </ul>
-            </section>
+  <div class="wrap">
+    <header class="topbar" role="banner" aria-label="Top navigation">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div style="min-width:0">
+          <h1>Nidhish Gautam</h1>
+          <p>ML Engineer • ML Systems • Deep Learning</p>
         </div>
-    </div>
+      </div>
+      <nav class="actions" aria-label="Quick actions">
+        <a class="btn" href="#work">Experience</a>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#skills">Skills</a>
+        <a class="btn primary" href="javascript:window.print()">Print / Save PDF</a>
+      </nav>
+    </header>
+
+    <main class="sheet" role="main">
+      <section class="hero" aria-label="Summary">
+        <h2>Nidhish Gautam</h2>
+        <p class="headline">
+          ML Engineer with 5 years of production systems experience. NYU MS AI — focus on machine learning, deep learning, ML systems, and system design.
+        </p>
+        <div class="meta" aria-label="Contact details">
+          <span class="pill"><b>Email</b> <a href="mailto:g97.nidhish@gmail.com">g97.nidhish@gmail.com</a></span>
+          <span class="pill"><b>Phone</b> <a href="tel:+19293317117">+1 (929) 331-7117</a></span>
+          <span class="pill"><b>Location</b> Brooklyn, NY 11216</span>
+          <span class="pill"><b>GitHub</b> <a href="https://github.com/nidhish1" target="_blank" rel="noreferrer">@nidhish1</a></span>
+          <span class="pill"><b>LinkedIn</b> <a href="https://www.linkedin.com/in/nidhish-g-ba90aa1a3" target="_blank" rel="noreferrer">/in/nidhish-g-ba90aa1a3</a></span>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="Main content">
+        <div class="twoCol">
+          <section class="card" id="work" aria-label="Experience">
+            <h3>Experience</h3>
+
+            <article class="item">
+              <div class="row">
+                <div>
+                  <div class="role">Software Engineer 2</div>
+                  <div class="place">Mudrex (Y Combinator) • AI Team</div>
+                </div>
+                <div class="dates">Jun 2024 — Sept 2025</div>
+              </div>
+              <ul class="bullets">
+                <li>Designed and implemented a multi-agent system for portfolio analytics using <b>LangGraph</b> and <b>LangChain</b>, with discrete agents for real-time ingestion and grounded financial analysis.</li>
+                <li>Built a backend pricing service aggregating and normalizing market data into <b>TimescaleDB</b>, plus <b>WebSocket</b> streams to feed live prices into TradingView charts.</li>
+                <li>Built a production-grade <b>Solana</b> payment gateway with multi-RPC failover (Helius/QuickNode), dynamic priority fees, and transaction finality tracking for reliable settlements.</li>
+                <li>Shipped real-time monitoring and alerting using <b>Prometheus</b> and <b>Grafana</b> for 24/7 reliability across the gateway and pricing services.</li>
+              </ul>
+            </article>
+
+            <article class="item">
+              <div class="row">
+                <div>
+                  <div class="role">Software Engineer 2</div>
+                  <div class="place">Swiggy (India) • Payments Team</div>
+                </div>
+                <div class="dates">Sept 2023 — Apr 2024</div>
+              </div>
+              <ul class="bullets">
+                <li>Contributed to a high-scale payments system processing <b>1.1M+</b> transactions/day; implemented idempotent workflows, retries, and timeout handling to reduce failures in distributed systems.</li>
+                <li>Executed a zero-downtime migration to <b>DynamoDB</b> using a dual-write strategy from RDS; redesigned schema for high-concurrency writes to eliminate scale issues during peaks.</li>
+                <li>Implemented <b>Kafka</b>-based event processing with Redis-backed idempotency and <b>gRPC</b> services for reliable payment processing.</li>
+                <li>On-call ownership for payment services: debugged production issues and shipped fixes with minimal customer impact.</li>
+              </ul>
+            </article>
+
+            <article class="item">
+              <div class="row">
+                <div>
+                  <div class="role">Software Engineer</div>
+                  <div class="place">KreditBee (India)</div>
+                </div>
+                <div class="dates">Nov 2020 — Aug 2023</div>
+              </div>
+              <ul class="bullets">
+                <li>Worked on the Loan Management System on <b>AWS Lambda</b>, contributing to event-driven workflows using <b>Kafka</b> as the platform scaled ~<b>5×</b>.</li>
+                <li>Built an automated secrets rotation pipeline using <b>AWS KMS/HSM</b>, removing hardcoded keys and enforcing secure credential usage across services.</li>
+                <li>Built an error detection module to identify failed/inconsistent loan transactions via rule-based checks, improving data correctness and operational visibility.</li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="card" id="projects" aria-label="Projects">
+            <h3>Selected Projects</h3>
+
+            <div class="projectsGrid" aria-label="Project cards">
+              <article class="projectCard">
+                <div class="projectThumb">
+                  <img src="assets/rl-bullet-drones.png" alt="RL Bullet Drones simulation screenshot" />
+                </div>
+                <div class="projectBody">
+                  <h4 class="projectTitle">RL Bullet Drones</h4>
+                  <div class="place">Reinforcement Learning • Drones</div>
+                  <p class="projectNote">Built a PyBullet-based RL environment to train and evaluate drone navigation/control policies. Designed observation and action spaces, reward shaping, and a repeatable evaluation setup to compare policies across tasks and conditions.</p>
+                  <div class="projectMeta" aria-label="Project links">
+                    <a class="projectLink" href="https://github.com/nidhish1/bullet-drones" target="_blank" rel="noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="projectCard">
+                <div class="projectThumb">
+                  <img src="assets/llm-fine-tune.png" alt="LLM fine-tuning project graphic" />
+                </div>
+                <div class="projectBody">
+                  <h4 class="projectTitle">LLM Fine-Tuning (Qwen 2.5B) — SVG Generation</h4>
+                  <div class="place">LLM Fine-tuning • Structured Generation</div>
+                  <p class="projectNote">Fine-tuned <b>Qwen 2.5B</b> for SVG generation; built an ML pipeline and training infra on <b>4× A100</b> GPUs. Published the model for reuse.</p>
+                  <div class="projectMeta" aria-label="Project links">
+                    <a class="projectLink" href="https://www.kaggle.com/models/nidhish1010/finetune-svg-ng" target="_blank" rel="noreferrer">Published Model ↗</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="projectCard">
+                <div class="projectThumb">
+                  <img src="assets/nemotron-header.png" alt="NVIDIA Nemotron challenge header" />
+                </div>
+                <div class="projectBody">
+                  <h4 class="projectTitle">NVIDIA Nemotron Model Reasoning Challenge</h4>
+                  <div class="place">LLM Reasoning • Evaluation</div>
+                  <p class="projectNote">Worked on the NVIDIA Nemotron reasoning challenge, exploring reinforcement learning approaches and lightweight fine-tuning methods to improve reasoning quality and robustness.</p>
+                  <div class="projectMeta" aria-label="Project links">
+                    <a class="projectLink" href="#" target="_blank" rel="noreferrer">Link ↗</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="projectCard">
+                <div class="projectThumb">
+                  <img src="assets/claude-nyu-columbia-hack.png" alt="Claude NYU × Columbia Hack project header" />
+                </div>
+                <div class="projectBody">
+                  <h4 class="projectTitle">Claude NYU × Columbia Hack</h4>
+                  <div class="place">Hackathon • Rapid Prototyping</div>
+                  <p class="projectNote">Built an agentic, local-first memory layer that captures how you research/shop/learn (clicks, dwell time, scroll, queries) and exports portable memory files you can reuse across agents/providers.</p>
+                  <div class="projectMeta" aria-label="Project links">
+                    <a class="projectLink" href="https://github.com/nidhish1/nyuXcolumbiaHack" target="_blank" rel="noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="projectCard">
+                <div class="projectThumb">
+                  <img src="assets/foundation-of-robotics.png" alt="Foundation of Robotics project screenshot" />
+                </div>
+                <div class="projectBody">
+                  <h4 class="projectTitle">Robotics Fundamentals</h4>
+                  <div class="place">Robotics • Coursework / Notes</div>
+                  <p class="projectNote">Worked through core robotics fundamentals including Denavit–Hartenberg (DH) parameters for forward kinematics and Lagrangian dynamics for deriving equations of motion (e.g., manipulators).</p>
+                  <div class="projectMeta" aria-label="Project links">
+                    <a class="projectLink" href="https://github.com/nidhish1/foundation-of-robotics" target="_blank" rel="noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </section>
+        </div>
+
+        <aside class="mini" aria-label="Sidebar">
+          <section class="card" id="skills" aria-label="Skills">
+            <h3>Skills</h3>
+            <div class="place" style="margin:0 0 10px">Machine Learning &amp; AI</div>
+            <div class="chips" aria-label="Machine learning and AI skills">
+              <span class="chip">PyTorch</span>
+              <span class="chip">Scikit-learn</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">NumPy</span>
+              <span class="chip">RAG Pipelines</span>
+              <span class="chip">OpenAI API</span>
+              <span class="chip">LangGraph</span>
+              <span class="chip">LangChain</span>
+              <span class="chip">BigQuery</span>
+            </div>
+
+            <div class="place" style="margin:14px 0 10px">Backend &amp; Infrastructure</div>
+            <div class="chips" aria-label="Backend and infrastructure skills">
+              <span class="chip">Go</span>
+              <span class="chip">Python</span>
+              <span class="chip">SQL</span>
+              <span class="chip">Kafka</span>
+              <span class="chip">Spark</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Kubernetes</span>
+              <span class="chip">AWS</span>
+              <span class="chip">GCP</span>
+              <span class="chip">Azure</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">Microservices</span>
+              <span class="chip">CI/CD</span>
+            </div>
+          </section>
+
+          <section class="card" aria-label="Education">
+            <h3>Education</h3>
+            <div class="kv">
+              <div class="line"><span class="k">MS</span><span>New York University — MS CE (AI track)</span></div>
+              <div class="line"><span class="k">Dates</span><span>Aug 2025 — Present</span></div>
+              <div class="line"><span class="k">BS</span><span>Vellore Institute of Technology — B.Tech CS</span></div>
+              <div class="line"><span class="k">Dates</span><span>Jun 2016 — May 2020</span></div>
+            </div>
+          </section>
+
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <span>Tip: use <code>Print / Save PDF</code> to export</span>
+    </footer>
+  </div>
 </body>
 </html>
