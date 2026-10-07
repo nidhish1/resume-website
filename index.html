@@ -394,6 +394,14 @@
     @media (max-width: 600px) { .topbar { flex-wrap: wrap; } .actions { justify-content: flex-start; } .research-method { grid-template-columns: 1fr; } }
     @media print { .research { background: white; break-inside: avoid; } }
 
+    .paper-abstract { margin: 24px 0 0; padding: 26px clamp(18px, 4vw, 42px); background: #343638; color: #f2f1eb; border-radius: 8px; font-family: "Latin Modern Roman", "Computer Modern", "CMU Serif", Georgia, "Times New Roman", serif; font-size: 0.9375rem; line-height: 1.75; }
+    .paper-abstract h4 { margin: 0 0 12px; text-align: center; font-size: 1rem; font-weight: 700; }
+    .paper-abstract p { margin: 0; text-align: justify; hyphens: auto; }
+    .ccs-concepts { margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(242, 241, 235, .22); }
+    .ccs-concepts h4, .ccs-concepts p { text-align: left; }
+    .ccs-concepts h4 { margin-bottom: 6px; }
+    @media (max-width: 600px) { .paper-abstract p { text-align: left; } }
+    @media print { .paper-abstract { background: white; color: black; border: 1px solid #ddd; } }
   </style>
 </head>
 <body>
@@ -434,17 +442,10 @@
         <p class="research-label">Featured research · 2026</p>
         <h3 id="research-title">Selecting What to Remember<span class="research-subtitle">Validation-Gated Memory for LLM Review of Reinforcement Learning Trading Decisions</span></h3>
         <p class="research-authors"><strong>Nidhish Gautam</strong>, Quanyan Zhu, and Mirela M. Ivan · NYU Tandon School of Engineering</p>
-        <p class="research-summary">Can an LLM learn useful lessons from trading experience without retraining its weights? This work studies a frozen LLM reviewer placed between an existing MLP–PPO trading system and its orders. The reviewer can keep, halve, or flatten the proposed exposure, using a memory of lessons selected through validation.</p>
-        <ol class="research-method" aria-label="Research approach">
-          <li><strong>Generate lessons</strong>Reflect on development-period decisions and outcomes to propose reusable review instructions.</li>
-          <li><strong>Validate before retaining</strong>Screen candidate lessons and replay them on a separate chronological validation period, checking Sharpe ratio and drawdown.</li>
-          <li><strong>Freeze and evaluate</strong>Keep the selected memory fixed for final evaluation and compare it with unvalidated memory and a reviewer without memory.</li>
-        </ol>
-        <div class="chips" aria-label="Research topics">
-          <span class="chip">Reinforcement Learning</span>
-          <span class="chip">LLM Agents</span>
-          <span class="chip">Memory Selection</span>
-          <span class="chip">Quantitative Finance</span>
+        <div class="paper-abstract" aria-labelledby="abstract-heading">
+          <h4 id="abstract-heading">Abstract</h4>
+          <p>We ask whether an already-trained reinforcement learning trading system can be improved by placing a frozen large language model (LLM) reviewer in front of its orders, without retraining any component and under a small API budget. The base system pairs a multilayer perceptron (MLP), which classifies the next market move as bearish, neutral, or bullish, with an ensemble of Proximal Policy Optimization (PPO) agents, which propose a continuous exposure; a fixed weighted sum of the two becomes the daily trading proposal. The reviewer sees the market features, the component outputs, the portfolio state, and the cost of each permitted action, and may only keep, halve, or flatten that proposal. Because an LLM does not learn from the outcomes of its own past decisions, we add a memory layer: over a development period we pair each review with its realized outcome, let the LLM reflect on these records to draft reusable review instructions, and then screen the drafts and replay each survivor on a later, disjoint validation period. Only instructions that raise the validation Sharpe ratio without materially increasing drawdown are retained, and the retained memory is frozen for the final evaluation. On daily Ethereum data, with 20M tokens costing merely $4 on DeepSeek Flash V4, a single gate-selected instruction raised the final-period Sharpe ratio from 5.638 to 5.763 (+2.2%) and net return from 10,009% to 10,763%, at an unchanged maximum drawdown of 18.59%. Memory that was not validated hurt: the reviewer with all 20 generated instructions, with the 5 screened instructions, or with no memory at all underperformed the base system by 7–11% in Sharpe ratio. These results come from one asset and one market path and are preliminary.</p>
+          <div class="ccs-concepts"><h4>CCS Concepts</h4><p>LLM Memory; Reinforcement Learning; Quantitative Finance.</p></div>
         </div>
         <p class="research-status">Working paper · Ongoing research on daily Ethereum trading data.</p>
       </section>
