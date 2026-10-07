@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Professional resume website template." />
+  <meta name="description" content="Nidhish Gautam — ML engineer and NYU researcher working on reinforcement learning, LLM agents, and validation-gated memory for trading." />
   <meta http-equiv="Cache-Control" content="no-store" />
   <meta http-equiv="Pragma" content="no-cache" />
-  <title>Nidhish Gautam — Resume</title>
+  <title>Nidhish Gautam — Research &amp; Engineering</title>
   <style>
     :root {
       color-scheme: light;
@@ -379,6 +379,21 @@
       .item { background: white; box-shadow: none; }
       a { text-decoration: none; }
     }
+
+    .research { margin: 26px 36px 0; padding: 28px; border: 1px solid var(--chipBorder); border-left: 4px solid var(--brand); border-radius: 18px; background: linear-gradient(120deg, #f8f5ef, #fff); }
+    .research-label { margin: 0 0 12px; color: var(--brand2); font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .research h3 { max-width: 40ch; margin: 0; font-size: clamp(23px, 3vw, 32px); line-height: 1.25; letter-spacing: -.025em; text-wrap: balance; }
+    .research-subtitle { display: block; margin-top: 8px; font-size: .65em; font-weight: 500; letter-spacing: 0; line-height: 1.45; color: var(--muted); }
+    .research-authors { margin: 16px 0 8px; font-size: 14px; color: var(--muted); }
+    .research-summary { max-width: 83ch; font-size: 16px; color: var(--muted); }
+    .research-method { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 20px 0; margin: 20px 0 0; list-style: none; border-top: 1px solid var(--border); }
+    .research-method strong { display: block; margin-bottom: 5px; font-size: 16px; color: var(--text); }
+    .research-method li { font-size: 14px; color: var(--muted); }
+    .research-status { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
+    @media (max-width: 920px) { .research { margin: 22px 18px 0; padding: 22px; } }
+    @media (max-width: 600px) { .topbar { flex-wrap: wrap; } .actions { justify-content: flex-start; } .research-method { grid-template-columns: 1fr; } }
+    @media print { .research { background: white; break-inside: avoid; } }
+
   </style>
 </head>
 <body>
@@ -388,10 +403,11 @@
         <div class="mark" aria-hidden="true"></div>
         <div style="min-width:0">
           <h1>Nidhish Gautam</h1>
-          <p>ML Engineer • ML Systems • Deep Learning</p>
+          <p>ML Engineer • Reinforcement Learning • LLM Agents</p>
         </div>
       </div>
             <nav class="actions" aria-label="Quick actions">
+              <a class="btn" href="#research">Research</a>
               <a class="btn" href="#work">Experience</a>
               <a class="btn" href="#projects">Projects</a>
               <a class="btn" href="#skills">Skills</a>
@@ -402,7 +418,7 @@
       <section class="hero" aria-label="Summary">
         <h2>Nidhish Gautam</h2>
         <p class="headline">
-          ML Engineer with 5 years of production systems experience. NYU MS CE — focus on machine learning, deep learning, ML systems, and system design.
+          ML Engineer with 5 years of production systems experience and an MS Computer Engineering student at NYU Tandon. My research explores reinforcement learning, LLM agents, and memory for sequential decision-making.
         </p>
         <div class="meta" aria-label="Contact details">
           <span class="pill"><b>Email</b> <a href="mailto:g97.nidhish@gmail.com">g97.nidhish@gmail.com</a></span>
@@ -411,6 +427,26 @@
           <span class="pill"><b>GitHub</b> <a href="https://github.com/nidhish1" target="_blank" rel="noreferrer">@nidhish1</a></span>
           <span class="pill"><b>LinkedIn</b> <a href="https://www.linkedin.com/in/nidhish-g-ba90aa1a3" target="_blank" rel="noreferrer">/in/nidhish-g-ba90aa1a3</a></span>
         </div>
+      </section>
+
+
+      <section class="research" id="research" aria-labelledby="research-title">
+        <p class="research-label">Featured research · 2026</p>
+        <h3 id="research-title">Selecting What to Remember<span class="research-subtitle">Validation-Gated Memory for LLM Review of Reinforcement Learning Trading Decisions</span></h3>
+        <p class="research-authors"><strong>Nidhish Gautam</strong>, Quanyan Zhu, and Mirela M. Ivan · NYU Tandon School of Engineering</p>
+        <p class="research-summary">Can an LLM learn useful lessons from trading experience without retraining its weights? This work studies a frozen LLM reviewer placed between an existing MLP–PPO trading system and its orders. The reviewer can keep, halve, or flatten the proposed exposure, using a memory of lessons selected through validation.</p>
+        <ol class="research-method" aria-label="Research approach">
+          <li><strong>Generate lessons</strong>Reflect on development-period decisions and outcomes to propose reusable review instructions.</li>
+          <li><strong>Validate before retaining</strong>Screen candidate lessons and replay them on a separate chronological validation period, checking Sharpe ratio and drawdown.</li>
+          <li><strong>Freeze and evaluate</strong>Keep the selected memory fixed for final evaluation and compare it with unvalidated memory and a reviewer without memory.</li>
+        </ol>
+        <div class="chips" aria-label="Research topics">
+          <span class="chip">Reinforcement Learning</span>
+          <span class="chip">LLM Agents</span>
+          <span class="chip">Memory Selection</span>
+          <span class="chip">Quantitative Finance</span>
+        </div>
+        <p class="research-status">Working paper · Ongoing research on daily Ethereum trading data.</p>
       </section>
 
       <section class="grid" aria-label="Main content">
