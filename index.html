@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Nidhish Gautam — ML engineer and NYU researcher working on reinforcement learning, LLM agents, and validation-gated memory for trading." name="description"/>
 <title>Nidhish Gautam — Research &amp; Engineering</title>
-<link href="styles.css" rel="stylesheet"/></head>
+<link href="styles.css?v=20261008-paper" rel="stylesheet"/></head>
 <body><a class="skip-link" href="#main">Skip to content</a>
 <div class="wrap">
 <header aria-label="Top navigation" class="topbar" role="banner"><nav aria-label="Main navigation" class="nav">
@@ -27,6 +27,10 @@
 <h2 class="section-heading">Featured research · 2026</h2>
 <h3 id="research-title">Selecting What to Remember<span class="research-subtitle">Validation-Gated Memory for LLM Review of Reinforcement Learning Trading Decisions</span></h3>
 <p class="research-authors">Nidhish Gautam, Quanyan Zhu, and Mirela M. Ivan</p><p class="research-affiliation">NYU Tandon School of Engineering · Working paper, 2026</p>
+<aside class="paper-download" aria-label="Full research paper">
+<div><strong>Full research paper</strong><p>Read the complete working paper, including methods and results.</p></div>
+<div class="paper-actions"><a class="paper-download-button" href="assets/selecting-what-to-remember.pdf" download="Selecting-What-to-Remember.pdf">Download full paper (PDF)</a><a class="paper-open" href="assets/selecting-what-to-remember.pdf" target="_blank" rel="noopener">Open PDF in a new tab</a></div>
+</aside>
 <div aria-labelledby="abstract-heading" class="paper-abstract">
 <h4 id="abstract-heading">Summary</h4><p>A frozen LLM reviews an existing MLP–PPO trading system’s orders. One validation-gated memory instruction improved final-period Sharpe and net return without increasing maximum drawdown. Results are preliminary and limited to one asset and one market path.</p><details><summary>Read full abstract</summary><p>We ask whether an already-trained reinforcement learning trading system can be improved by placing a frozen large language model (LLM) reviewer in front of its orders, without retraining any component and under a small API budget. The base system pairs a multilayer perceptron (MLP), which classifies the next market move as bearish, neutral, or bullish, with an ensemble of Proximal Policy Optimization (PPO) agents, which propose a continuous exposure; a fixed weighted sum of the two becomes the daily trading proposal. The reviewer sees the market features, the component outputs, the portfolio state, and the cost of each permitted action, and may only keep, halve, or flatten that proposal. Because an LLM does not learn from the outcomes of its own past decisions, we add a memory layer: over a development period we pair each review with its realized outcome, let the LLM reflect on these records to draft reusable review instructions, and then screen the drafts and replay each survivor on a later, disjoint validation period. Only instructions that raise the validation Sharpe ratio without materially increasing drawdown are retained, and the retained memory is frozen for the final evaluation. On daily Ethereum data, with 20M tokens costing merely $4 on DeepSeek Flash V4, a single gate-selected instruction raised the final-period Sharpe ratio from 5.638 to 5.763 (+2.2%) and net return from 10,009% to 10,763%, at an unchanged maximum drawdown of 18.59%. Memory that was not validated hurt: the reviewer with all 20 generated instructions, with the 5 screened instructions, or with no memory at all underperformed the base system by 7–11% in Sharpe ratio. These results come from one asset and one market path and are preliminary.</p></details>
 

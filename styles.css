@@ -78,3 +78,12 @@ tbody th { font-weight: 400; }
 td { font-family: var(--mono); font-size: .8125rem; font-variant-numeric: tabular-nums; }
 #results-note { margin-top: var(--s2); color: var(--muted); font-size: .875rem; }
 @media (max-width: 600px) { th,td { padding: var(--s2) var(--s1); } }
+
+.paper-download { margin-top: var(--s4); padding: var(--s4); border: 1px solid #b8cee5; border-left: 4px solid var(--link); border-radius: 4px; background: #eef5fc; }
+.paper-download strong { font-size: 1rem; }
+.paper-download p { margin-top: var(--s1); color: var(--muted); font-size: .875rem; }
+.paper-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3) var(--s4); margin-top: var(--s3); }
+.paper-download-button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--link); border-radius: 4px; background: var(--link); color: #fff; font-size: .875rem; font-weight: 650; text-decoration: none; text-align: center; }
+.paper-download-button:hover { background: #104479; border-color: #104479; }
+.paper-open { font-size: .875rem; }
+@media (max-width: 600px) { .paper-download { padding: var(--s3); } .paper-actions { align-items: stretch; flex-direction: column; gap: var(--s3); } .paper-open { text-align: center; } }
