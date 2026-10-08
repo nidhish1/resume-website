@@ -5,10 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Nidhish Gautam — ML engineer and NYU researcher working on reinforcement learning, LLM agents, and validation-gated memory for trading." name="description"/>
-
-
 <title>Nidhish Gautam — Research &amp; Engineering</title>
-
 <link href="styles.css" rel="stylesheet"/></head>
 <body><a class="skip-link" href="#main">Skip to content</a>
 <div class="wrap">
@@ -31,13 +28,12 @@
 <h3 id="research-title">Selecting What to Remember<span class="research-subtitle">Validation-Gated Memory for LLM Review of Reinforcement Learning Trading Decisions</span></h3>
 <p class="research-authors">Nidhish Gautam, Quanyan Zhu, and Mirela M. Ivan</p><p class="research-affiliation">NYU Tandon School of Engineering · Working paper, 2026</p>
 <div aria-labelledby="abstract-heading" class="paper-abstract">
-<h4 id="abstract-heading">Abstract</h4>
-<p>We ask whether an already-trained reinforcement learning trading system can be improved by placing a frozen large language model (LLM) reviewer in front of its orders, without retraining any component and under a small API budget. The base system pairs a multilayer perceptron (MLP), which classifies the next market move as bearish, neutral, or bullish, with an ensemble of Proximal Policy Optimization (PPO) agents, which propose a continuous exposure; a fixed weighted sum of the two becomes the daily trading proposal. The reviewer sees the market features, the component outputs, the portfolio state, and the cost of each permitted action, and may only keep, halve, or flatten that proposal. Because an LLM does not learn from the outcomes of its own past decisions, we add a memory layer: over a development period we pair each review with its realized outcome, let the LLM reflect on these records to draft reusable review instructions, and then screen the drafts and replay each survivor on a later, disjoint validation period. Only instructions that raise the validation Sharpe ratio without materially increasing drawdown are retained, and the retained memory is frozen for the final evaluation. On daily Ethereum data, with 20M tokens costing merely $4 on DeepSeek Flash V4, a single gate-selected instruction raised the final-period Sharpe ratio from 5.638 to 5.763 (+2.2%) and net return from 10,009% to 10,763%, at an unchanged maximum drawdown of 18.59%. Memory that was not validated hurt: the reviewer with all 20 generated instructions, with the 5 screened instructions, or with no memory at all underperformed the base system by 7–11% in Sharpe ratio. These results come from one asset and one market path and are preliminary.</p>
+<h4 id="abstract-heading">Summary</h4><p>A frozen LLM reviews an existing MLP–PPO trading system’s orders. One validation-gated memory instruction improved final-period Sharpe and net return without increasing maximum drawdown. Results are preliminary and limited to one asset and one market path.</p><details><summary>Read full abstract</summary><p>We ask whether an already-trained reinforcement learning trading system can be improved by placing a frozen large language model (LLM) reviewer in front of its orders, without retraining any component and under a small API budget. The base system pairs a multilayer perceptron (MLP), which classifies the next market move as bearish, neutral, or bullish, with an ensemble of Proximal Policy Optimization (PPO) agents, which propose a continuous exposure; a fixed weighted sum of the two becomes the daily trading proposal. The reviewer sees the market features, the component outputs, the portfolio state, and the cost of each permitted action, and may only keep, halve, or flatten that proposal. Because an LLM does not learn from the outcomes of its own past decisions, we add a memory layer: over a development period we pair each review with its realized outcome, let the LLM reflect on these records to draft reusable review instructions, and then screen the drafts and replay each survivor on a later, disjoint validation period. Only instructions that raise the validation Sharpe ratio without materially increasing drawdown are retained, and the retained memory is frozen for the final evaluation. On daily Ethereum data, with 20M tokens costing merely $4 on DeepSeek Flash V4, a single gate-selected instruction raised the final-period Sharpe ratio from 5.638 to 5.763 (+2.2%) and net return from 10,009% to 10,763%, at an unchanged maximum drawdown of 18.59%. Memory that was not validated hurt: the reviewer with all 20 generated instructions, with the 5 screened instructions, or with no memory at all underperformed the base system by 7–11% in Sharpe ratio. These results come from one asset and one market path and are preliminary.</p></details>
+
 <div class="ccs-concepts"><h4>CCS Concepts</h4><p>LLM Memory; Reinforcement Learning; Quantitative Finance.</p></div>
-</div>
+</div><div class="results"><table aria-describedby="results-note"><caption>Daily Ethereum · Final evaluation period</caption><thead><tr><th scope="col">System</th><th scope="col">Sharpe</th><th scope="col">Net return</th><th scope="col">Max drawdown</th></tr></thead><tbody><tr><th scope="row">Base system</th><td>5.638</td><td>10,009%</td><td>18.59%</td></tr><tr><th scope="row">1 gated instruction</th><td>5.763</td><td>10,763%</td><td>18.59%</td></tr><tr><th scope="row">All 20 instructions</th><td>—</td><td>—</td><td>—</td></tr><tr><th scope="row">5 screened instructions</th><td>—</td><td>—</td><td>—</td></tr><tr><th scope="row">No memory</th><td>—</td><td>—</td><td>—</td></tr></tbody></table><p id="results-note">— Not reported in the abstract. The last three variants underperformed the base system by 7–11% in Sharpe; individual values are not specified.</p></div>
 <p class="research-status">Working paper · Ongoing research on daily Ethereum trading data.</p>
 </section>
-
 <section aria-label="Experience" class="card" id="work">
 <h2 class="section-heading">Experience</h2>
 <article class="entry"><div class="dates">Jun 2024 — Sep 2025</div><div class="entry-content"><div>
@@ -71,7 +67,7 @@
 <div aria-label="Project cards" class="projectsGrid">
 <article class="projectCard">
 <div class="projectThumb">
-<img alt="RL Bullet Drones simulation screenshot" decoding="async" height="450" loading="lazy" src="assets/rl-bullet-drones.png" width="800"/>
+<img alt="RL Bullet Drones simulation screenshot" decoding="async" height="450" loading="lazy" src="assets/rl-bullet-drones.webp" width="800"/>
 </div>
 <div class="projectBody">
 <h3 class="projectTitle">RL Bullet Drones</h3>
@@ -84,7 +80,7 @@
 </article>
 <article class="projectCard">
 <div class="projectThumb">
-<img alt="LLM fine-tuning project graphic" decoding="async" height="450" loading="lazy" src="assets/llm-fine-tune.png" width="800"/>
+<img alt="LLM fine-tuning project graphic" decoding="async" height="450" loading="lazy" src="assets/llm-fine-tune.webp" width="800"/>
 </div>
 <div class="projectBody">
 <h3 class="projectTitle">LLM Fine-Tuning (Qwen 2.5B) — SVG Generation</h3>
@@ -97,18 +93,17 @@
 </article>
 <article class="projectCard">
 <div class="projectThumb">
-<img alt="NVIDIA Nemotron challenge header" decoding="async" height="450" loading="lazy" src="assets/nemotron-header.png" width="800"/>
+<img alt="NVIDIA Nemotron challenge header" decoding="async" height="450" loading="lazy" src="assets/nemotron-header.webp" width="800"/>
 </div>
 <div class="projectBody">
 <h3 class="projectTitle">NVIDIA Nemotron Model Reasoning Challenge</h3>
 <div class="place">LLM Reasoning • Evaluation</div>
 <p class="projectNote">Worked on the NVIDIA Nemotron reasoning challenge, exploring reinforcement learning approaches and lightweight fine-tuning methods to improve reasoning quality and robustness.</p>
-
 </div>
 </article>
 <article class="projectCard">
 <div class="projectThumb">
-<img alt="Claude NYU × Columbia Hack project header" decoding="async" height="450" loading="lazy" src="assets/claude-nyu-columbia-hack.png" width="800"/>
+<img alt="Claude NYU × Columbia Hack project header" decoding="async" height="450" loading="lazy" src="assets/claude-nyu-columbia-hack.webp" width="800"/>
 </div>
 <div class="projectBody">
 <h3 class="projectTitle">Claude NYU × Columbia Hack</h3>
@@ -121,7 +116,7 @@
 </article>
 <article class="projectCard">
 <div class="projectThumb">
-<img alt="Foundation of Robotics project screenshot" decoding="async" height="450" loading="lazy" src="assets/foundation-of-robotics.png" width="800"/>
+<img alt="Foundation of Robotics project screenshot" decoding="async" height="450" loading="lazy" src="assets/foundation-of-robotics.webp" width="800"/>
 </div>
 <div class="projectBody">
 <h3 class="projectTitle">Robotics Fundamentals</h3>
@@ -137,7 +132,6 @@
 <h2 class="section-heading">Education</h2>
 <article class="entry"><p class="dates">Aug 2025 – Present</p><div class="entry-content"><h3>MS Computer Engineering (AI track)</h3><p class="place">New York University</p></div></article><article class="entry"><p class="dates">Jun 2016 – May 2020</p><div class="entry-content"><h3>B.Tech Computer Science</h3><p class="place">Vellore Institute of Technology</p></div></article>
 </section></main>
-
 </div>
 </body>
 </html>

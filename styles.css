@@ -68,3 +68,16 @@ main>section:not(.hero) { border-top: 1px solid var(--line); padding-block: var(
 }
 @media (max-width: 360px) { .nav { flex-wrap: wrap; justify-content: flex-start; gap: var(--s2) var(--s3); } }
 @media print { .topbar,.skip-link { display: none; } :root { --bg: white; --text: black; --muted: #444; --line: #ccc; --link: black; } .wrap { max-width: none; } .entry,.projectCard { break-inside: avoid; } }
+details { margin-top: var(--s3); }
+summary { cursor: pointer; font-size: .875rem; font-weight: 600; }
+details[open] summary { margin-bottom: var(--s3); }
+.results { margin-top: var(--s4); }
+table { width: 100%; border-collapse: collapse; font-size: .875rem; table-layout: fixed; }
+caption { text-align: left; margin-bottom: var(--s2); color: var(--muted); font-size: .875rem; }
+th,td { padding: var(--s2); border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+th:first-child { text-align: left; width: 37%; }
+thead th { font-weight: 600; }
+tbody th { font-weight: 400; }
+td { font-family: var(--mono); font-size: .8125rem; font-variant-numeric: tabular-nums; }
+#results-note { margin-top: var(--s2); color: var(--muted); font-size: .875rem; }
+@media (max-width: 600px) { th,td { padding: var(--s2) var(--s1); } }
