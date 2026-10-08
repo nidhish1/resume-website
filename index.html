@@ -1,636 +1,144 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Nidhish Gautam — ML engineer and NYU researcher working on reinforcement learning, LLM agents, and validation-gated memory for trading." />
-  <meta http-equiv="Cache-Control" content="no-store" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <title>Nidhish Gautam — Research &amp; Engineering</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --bg: #f5f1e8;
-      --bg2: #efe7d6;
-      --surface: rgba(255, 255, 255, 0.92);
-      --surface2: rgba(255, 255, 255, 0.86);
-      --text: #0f172a;
-      --muted: #475569;
-      --border: rgba(15, 23, 42, 0.1);
-      --shadow: 0 30px 80px rgba(2, 6, 23, 0.12);
-      --brand: #7c6f57;
-      --brand2: #6a5f4a;
-      --chip: rgba(124, 111, 87, 0.14);
-      --chipBorder: rgba(124, 111, 87, 0.22);
-      --ring: rgba(124, 111, 87, 0.35);
-      --radius: 20px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-    }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Nidhish Gautam — ML engineer and NYU researcher working on reinforcement learning, LLM agents, and validation-gated memory for trading." name="description"/>
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: var(--sans);
-      color: var(--text);
-      line-height: 1.5;
-      background:
-        radial-gradient(1200px 900px at 10% 0%, rgba(255, 255, 255, 0.55), transparent 60%),
-        radial-gradient(1000px 800px at 100% 10%, rgba(255, 255, 255, 0.35), transparent 60%),
-        repeating-linear-gradient(0deg, rgba(124, 111, 87, 0.028) 0 1px, transparent 1px 7px),
-        repeating-linear-gradient(90deg, rgba(124, 111, 87, 0.02) 0 1px, transparent 1px 9px),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      padding: 24px;
-    }
 
-    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    a:focus-visible, button:focus-visible {
-      outline: 3px solid var(--ring);
-      outline-offset: 2px;
-      border-radius: 10px;
-    }
+<title>Nidhish Gautam — Research &amp; Engineering</title>
 
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      border-radius: var(--radius);
-      overflow: clip;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      background:
-        radial-gradient(900px 600px at 20% 0%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.55)),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.35));
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      align-items: center;
-      padding: 18px 20px;
-      background: rgba(255, 255, 255, 0.75);
-      color: var(--text);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55));
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      box-shadow: 0 12px 30px rgba(2, 6, 23, 0.10);
-      flex: 0 0 auto;
-    }
-
-    .brand h1 {
-      margin: 0;
-      font-size: 15px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .brand p {
-      margin: 0;
-      font-size: 13px;
-      opacity: 0.85;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .btn {
-      appearance: none;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      background: rgba(2, 6, 23, 0.02);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      cursor: pointer;
-      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn:hover { transform: translateY(-1px); background: rgba(2, 6, 23, 0.04); border-color: rgba(124, 111, 87, 0.28); }
-    .btn.primary {
-      background: rgba(2, 6, 23, 0.06);
-      border-color: rgba(15, 23, 42, 0.14);
-      color: var(--text);
-    }
-
-    .sheet {
-      background: var(--surface);
-      backdrop-filter: blur(18px);
-    }
-
-    .hero {
-      padding: 42px 36px 26px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero h2 {
-      margin: 0;
-      font-size: clamp(28px, 3vw, 40px);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-
-    .hero .headline {
-      margin-top: 10px;
-      max-width: 70ch;
-      color: var(--muted);
-      font-size: 15.5px;
-    }
-
-    .meta {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.65);
-      border: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .pill b { color: var(--text); font-weight: 650; }
-    .pill code { font-family: var(--mono); font-size: 12px; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 22px;
-      padding: 26px 36px 40px;
-    }
-
-    .card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-    }
-
-    .item {
-      padding: 14px 14px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      background: rgba(255, 255, 255, 0.72);
-      transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
-    }
-
-    .item:hover { transform: translateY(-2px); box-shadow: 0 18px 60px rgba(2, 6, 23, 0.10); border-color: rgba(124, 111, 87, 0.28); }
-    .item + .item { margin-top: 12px; }
-
-    .row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .role { font-weight: 700; letter-spacing: -0.01em; }
-    .place { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
-    .dates {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--muted);
-      background: rgba(2, 6, 23, 0.04);
-      border: 1px solid var(--border);
-      padding: 6px 10px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-
-    .bullets {
-      margin: 10px 0 0;
-      padding: 0 0 0 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .bullets li { margin: 6px 0; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: var(--chip);
-      border: 1px solid var(--chipBorder);
-      color: rgba(72, 61, 42, 0.95);
-      font-size: 13px;
-      font-weight: 650;
-    }
-
-    .projectsGrid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px;
-      align-items: start;
-    }
-
-    .projectCard {
-      border: 1px solid rgba(148, 163, 184, 0.16);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.78);
-      overflow: clip;
-      transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
-    }
-
-    .projectCard:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 60px rgba(2, 6, 23, 0.10);
-      border-color: rgba(124, 111, 87, 0.28);
-    }
-
-    .projectThumb {
-      aspect-ratio: 16 / 9;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-      background:
-        radial-gradient(900px 400px at 20% 0%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2)),
-        repeating-linear-gradient(0deg, rgba(124, 111, 87, 0.03) 0 1px, transparent 1px 7px),
-        repeating-linear-gradient(90deg, rgba(124, 111, 87, 0.02) 0 1px, transparent 1px 9px),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.25));
-      display: grid;
-      place-items: center;
-      color: rgba(71, 85, 105, 0.95);
-      font-weight: 750;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 12px;
-    }
-
-    .projectThumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .projectBody { padding: 14px 14px 12px; }
-    .projectTitle { margin: 0; font-size: 15px; letter-spacing: -0.01em; }
-    .projectNote {
-      margin: 6px 0 0;
-      color: var(--muted);
-      font-size: 13.5px;
-      display: block;
-      overflow: visible;
-    }
-    .projectMeta { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
-    .projectLink {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      background: rgba(2, 6, 23, 0.02);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 650;
-      transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
-    }
-    .projectLink:hover { background: rgba(2, 6, 23, 0.04); border-color: rgba(124, 111, 87, 0.28); transform: translateY(-1px); }
-
-    .twoCol { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    .mini { display: grid; gap: 10px; }
-
-    .kv {
-      display: grid;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .kv .line { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-    .kv .k { font-weight: 700; color: var(--text); }
-
-    .footer {
-      padding: 16px 20px;
-      border-top: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.75);
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      backdrop-filter: blur(14px);
-      font-size: 13px;
-    }
-
-    .footer code { font-family: var(--mono); font-size: 12px; }
-
-    @media (max-width: 920px) {
-      .grid { grid-template-columns: 1fr; }
-      .hero { padding: 36px 18px 22px; }
-      .grid { padding: 22px 18px 34px; }
-    }
-
-    @media print {
-      body { background: white; padding: 0; }
-      .wrap { box-shadow: none; border: none; }
-      .topbar, .footer { display: none; }
-      .sheet { background: white; }
-      .card { background: white; }
-      .item { background: white; box-shadow: none; }
-      a { text-decoration: none; }
-    }
-
-    .research { margin: 26px 36px 0; padding: 28px; border: 1px solid var(--chipBorder); border-left: 4px solid var(--brand); border-radius: 18px; background: linear-gradient(120deg, #f8f5ef, #fff); }
-    .research-label { margin: 0 0 12px; color: var(--brand2); font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    .research h3 { max-width: 40ch; margin: 0; font-size: clamp(23px, 3vw, 32px); line-height: 1.25; letter-spacing: -.025em; text-wrap: balance; }
-    .research-subtitle { display: block; margin-top: 8px; font-size: .65em; font-weight: 500; letter-spacing: 0; line-height: 1.45; color: var(--muted); }
-    .research-authors { margin: 16px 0 8px; font-size: 14px; color: var(--muted); }
-    .research-summary { max-width: 83ch; font-size: 16px; color: var(--muted); }
-    .research-method { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 20px 0; margin: 20px 0 0; list-style: none; border-top: 1px solid var(--border); }
-    .research-method strong { display: block; margin-bottom: 5px; font-size: 16px; color: var(--text); }
-    .research-method li { font-size: 14px; color: var(--muted); }
-    .research-status { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
-    @media (max-width: 920px) { .research { margin: 22px 18px 0; padding: 22px; } }
-    @media (max-width: 600px) { .topbar { flex-wrap: wrap; } .actions { justify-content: flex-start; } .research-method { grid-template-columns: 1fr; } }
-    @media print { .research { background: white; break-inside: avoid; } }
-
-    .paper-abstract { margin: 24px 0 0; padding: 26px clamp(18px, 4vw, 42px); background: #343638; color: #f2f1eb; border-radius: 8px; font-family: "Latin Modern Roman", "Computer Modern", "CMU Serif", Georgia, "Times New Roman", serif; font-size: 0.9375rem; line-height: 1.75; }
-    .paper-abstract h4 { margin: 0 0 12px; text-align: center; font-size: 1rem; font-weight: 700; }
-    .paper-abstract p { margin: 0; text-align: justify; hyphens: auto; }
-    .ccs-concepts { margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(242, 241, 235, .22); }
-    .ccs-concepts h4, .ccs-concepts p { text-align: left; }
-    .ccs-concepts h4 { margin-bottom: 6px; }
-    @media (max-width: 600px) { .paper-abstract p { text-align: left; } }
-    @media print { .paper-abstract { background: white; color: black; border: 1px solid #ddd; } }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header class="topbar" role="banner" aria-label="Top navigation">
-      <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
-        <div style="min-width:0">
-          <h1>Nidhish Gautam</h1>
-          <p>ML Engineer • Reinforcement Learning • LLM Agents</p>
-        </div>
-      </div>
-            <nav class="actions" aria-label="Quick actions">
-              <a class="btn" href="#research">Research</a>
-              <a class="btn" href="#work">Experience</a>
-              <a class="btn" href="#projects">Projects</a>
-              <a class="btn" href="#skills">Skills</a>
-            </nav>
-          </header>
-
-    <main class="sheet" role="main">
-      <section class="hero" aria-label="Summary">
-        <h2>Nidhish Gautam</h2>
-        <p class="headline">
+<link href="styles.css" rel="stylesheet"/></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+<header aria-label="Top navigation" class="topbar" role="banner"><nav aria-label="Main navigation" class="nav">
+<a href="#research">Research</a>
+<a href="#work">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+<a href="#education">Education</a></nav></header>
+<main class="sheet" id="main" role="main" tabindex="-1">
+<section aria-label="Summary" class="hero">
+<h1>Nidhish Gautam</h1><p class="tagline">ML Engineer · Reinforcement Learning · LLM Agents</p>
+<p class="headline">
           ML Engineer with 5 years of production systems experience and an MS Computer Engineering student at NYU Tandon. My research explores reinforcement learning, LLM agents, and memory for sequential decision-making.
         </p>
-        <div class="meta" aria-label="Contact details">
-          <span class="pill"><b>Email</b> <a href="mailto:g97.nidhish@gmail.com">g97.nidhish@gmail.com</a></span>
-          <span class="pill"><b>Phone</b> <a href="tel:+19293317117">+1 (929) 331-7117</a></span>
-          <span class="pill"><b>Location</b> Brooklyn, New York 11216</span>
-          <span class="pill"><b>GitHub</b> <a href="https://github.com/nidhish1" target="_blank" rel="noreferrer">@nidhish1</a></span>
-          <span class="pill"><b>LinkedIn</b> <a href="https://www.linkedin.com/in/nidhish-g-ba90aa1a3" target="_blank" rel="noreferrer">/in/nidhish-g-ba90aa1a3</a></span>
-        </div>
-      </section>
+<dl class="contact"><div><dt>City</dt><dd>Brooklyn, New York</dd></div><div><dt>Email</dt><dd><a href="mailto:g97.nidhish@gmail.com">g97.nidhish@gmail.com</a></dd></div><div><dt>GitHub</dt><dd><a href="https://github.com/nidhish1">@nidhish1</a></dd></div><div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/nidhish-g-ba90aa1a3">Nidhish Gautam</a></dd></div></dl>
+</section>
+<section aria-labelledby="research-title" class="research" id="research">
+<h2 class="section-heading">Featured research · 2026</h2>
+<h3 id="research-title">Selecting What to Remember<span class="research-subtitle">Validation-Gated Memory for LLM Review of Reinforcement Learning Trading Decisions</span></h3>
+<p class="research-authors">Nidhish Gautam, Quanyan Zhu, and Mirela M. Ivan</p><p class="research-affiliation">NYU Tandon School of Engineering · Working paper, 2026</p>
+<div aria-labelledby="abstract-heading" class="paper-abstract">
+<h4 id="abstract-heading">Abstract</h4>
+<p>We ask whether an already-trained reinforcement learning trading system can be improved by placing a frozen large language model (LLM) reviewer in front of its orders, without retraining any component and under a small API budget. The base system pairs a multilayer perceptron (MLP), which classifies the next market move as bearish, neutral, or bullish, with an ensemble of Proximal Policy Optimization (PPO) agents, which propose a continuous exposure; a fixed weighted sum of the two becomes the daily trading proposal. The reviewer sees the market features, the component outputs, the portfolio state, and the cost of each permitted action, and may only keep, halve, or flatten that proposal. Because an LLM does not learn from the outcomes of its own past decisions, we add a memory layer: over a development period we pair each review with its realized outcome, let the LLM reflect on these records to draft reusable review instructions, and then screen the drafts and replay each survivor on a later, disjoint validation period. Only instructions that raise the validation Sharpe ratio without materially increasing drawdown are retained, and the retained memory is frozen for the final evaluation. On daily Ethereum data, with 20M tokens costing merely $4 on DeepSeek Flash V4, a single gate-selected instruction raised the final-period Sharpe ratio from 5.638 to 5.763 (+2.2%) and net return from 10,009% to 10,763%, at an unchanged maximum drawdown of 18.59%. Memory that was not validated hurt: the reviewer with all 20 generated instructions, with the 5 screened instructions, or with no memory at all underperformed the base system by 7–11% in Sharpe ratio. These results come from one asset and one market path and are preliminary.</p>
+<div class="ccs-concepts"><h4>CCS Concepts</h4><p>LLM Memory; Reinforcement Learning; Quantitative Finance.</p></div>
+</div>
+<p class="research-status">Working paper · Ongoing research on daily Ethereum trading data.</p>
+</section>
 
+<section aria-label="Experience" class="card" id="work">
+<h2 class="section-heading">Experience</h2>
+<article class="entry"><div class="dates">Jun 2024 — Sep 2025</div><div class="entry-content"><div>
+<h3 class="role">Senior Engineer</h3>
+<div class="place">Mudrex (Y Combinator) • AI Team</div>
+</div><ul class="bullets">
+<li>Designed and implemented a multi-agent system for portfolio analytics using <b>LangGraph</b> and <b>LangChain</b>, with discrete agents for real-time ingestion and grounded financial analysis.</li>
+<li>Built a backend pricing service aggregating and normalizing market data into <b>TimescaleDB</b>, plus <b>WebSocket</b> streams to feed live prices into TradingView charts.</li>
+<li>Built a production-grade <b>Solana</b> payment gateway with multi-RPC failover (Helius/QuickNode), dynamic priority fees, and transaction finality tracking for reliable settlements.</li>
+<li>Shipped real-time monitoring and alerting using <b>Prometheus</b> and <b>Grafana</b> for 24/7 reliability across the gateway and pricing services.</li>
+</ul></div></article>
+<article class="entry"><div class="dates">Sep 2023 — Apr 2024</div><div class="entry-content"><div>
+<h3 class="role">Software Engineer 2</h3>
+<div class="place">Swiggy (India) • Payments Team</div>
+</div><ul class="bullets">
+<li>Contributed to a high-scale payments system processing <b>1.1M+</b> transactions/day; implemented idempotent workflows, retries, and timeout handling to reduce failures in distributed systems.</li>
+<li>Executed a zero-downtime migration to <b>DynamoDB</b> using a dual-write strategy from RDS; redesigned schema for high-concurrency writes to eliminate scale issues during peaks.</li>
+<li>Implemented <b>Kafka</b>-based event processing with Redis-backed idempotency and <b>gRPC</b> services for reliable payment processing.</li>
+<li>On-call ownership for payment services: debugged production issues and shipped fixes with minimal customer impact.</li>
+</ul></div></article>
+<article class="entry"><div class="dates">Nov 2020 — Aug 2023</div><div class="entry-content"><div>
+<h3 class="role">Software Engineer</h3>
+<div class="place">KreditBee (India)</div>
+</div><ul class="bullets">
+<li>Worked on the Loan Management System on <b>AWS Lambda</b>, contributing to event-driven workflows using <b>Kafka</b> as the platform scaled ~<b>5×</b>.</li>
+<li>Built an automated secrets rotation pipeline using <b>AWS KMS/HSM</b>, removing hardcoded keys and enforcing secure credential usage across services.</li>
+<li>Built an error detection module to identify failed/inconsistent loan transactions via rule-based checks, improving data correctness and operational visibility.</li>
+</ul></div></article>
+</section><section aria-label="Projects" class="card" id="projects">
+<h2 class="section-heading">Selected Projects</h2>
+<div aria-label="Project cards" class="projectsGrid">
+<article class="projectCard">
+<div class="projectThumb">
+<img alt="RL Bullet Drones simulation screenshot" decoding="async" height="450" loading="lazy" src="assets/rl-bullet-drones.png" width="800"/>
+</div>
+<div class="projectBody">
+<h3 class="projectTitle">RL Bullet Drones</h3>
+<div class="place">Reinforcement Learning • Drones</div>
+<p class="projectNote">Built a PyBullet-based RL environment to train and evaluate drone navigation/control policies. Designed observation and action spaces, reward shaping, and a repeatable evaluation setup to compare policies across tasks and conditions.</p>
+<div aria-label="Project links" class="projectMeta">
+<a class="projectLink" href="https://github.com/nidhish1/bullet-drones" rel="noreferrer" target="_blank">GitHub</a>
+</div>
+</div>
+</article>
+<article class="projectCard">
+<div class="projectThumb">
+<img alt="LLM fine-tuning project graphic" decoding="async" height="450" loading="lazy" src="assets/llm-fine-tune.png" width="800"/>
+</div>
+<div class="projectBody">
+<h3 class="projectTitle">LLM Fine-Tuning (Qwen 2.5B) — SVG Generation</h3>
+<div class="place">LLM Fine-tuning • Structured Generation</div>
+<p class="projectNote">Fine-tuned <b>Qwen 2.5B</b> for SVG generation; built an ML pipeline and training infra on <b>4× A100</b> GPUs. Published the model for reuse.</p>
+<div aria-label="Project links" class="projectMeta">
+<a class="projectLink" href="https://www.kaggle.com/models/nidhish1010/finetune-svg-ng" rel="noreferrer" target="_blank">Published Model</a>
+</div>
+</div>
+</article>
+<article class="projectCard">
+<div class="projectThumb">
+<img alt="NVIDIA Nemotron challenge header" decoding="async" height="450" loading="lazy" src="assets/nemotron-header.png" width="800"/>
+</div>
+<div class="projectBody">
+<h3 class="projectTitle">NVIDIA Nemotron Model Reasoning Challenge</h3>
+<div class="place">LLM Reasoning • Evaluation</div>
+<p class="projectNote">Worked on the NVIDIA Nemotron reasoning challenge, exploring reinforcement learning approaches and lightweight fine-tuning methods to improve reasoning quality and robustness.</p>
 
-      <section class="research" id="research" aria-labelledby="research-title">
-        <p class="research-label">Featured research · 2026</p>
-        <h3 id="research-title">Selecting What to Remember<span class="research-subtitle">Validation-Gated Memory for LLM Review of Reinforcement Learning Trading Decisions</span></h3>
-        <p class="research-authors"><strong>Nidhish Gautam</strong>, Quanyan Zhu, and Mirela M. Ivan · NYU Tandon School of Engineering</p>
-        <div class="paper-abstract" aria-labelledby="abstract-heading">
-          <h4 id="abstract-heading">Abstract</h4>
-          <p>We ask whether an already-trained reinforcement learning trading system can be improved by placing a frozen large language model (LLM) reviewer in front of its orders, without retraining any component and under a small API budget. The base system pairs a multilayer perceptron (MLP), which classifies the next market move as bearish, neutral, or bullish, with an ensemble of Proximal Policy Optimization (PPO) agents, which propose a continuous exposure; a fixed weighted sum of the two becomes the daily trading proposal. The reviewer sees the market features, the component outputs, the portfolio state, and the cost of each permitted action, and may only keep, halve, or flatten that proposal. Because an LLM does not learn from the outcomes of its own past decisions, we add a memory layer: over a development period we pair each review with its realized outcome, let the LLM reflect on these records to draft reusable review instructions, and then screen the drafts and replay each survivor on a later, disjoint validation period. Only instructions that raise the validation Sharpe ratio without materially increasing drawdown are retained, and the retained memory is frozen for the final evaluation. On daily Ethereum data, with 20M tokens costing merely $4 on DeepSeek Flash V4, a single gate-selected instruction raised the final-period Sharpe ratio from 5.638 to 5.763 (+2.2%) and net return from 10,009% to 10,763%, at an unchanged maximum drawdown of 18.59%. Memory that was not validated hurt: the reviewer with all 20 generated instructions, with the 5 screened instructions, or with no memory at all underperformed the base system by 7–11% in Sharpe ratio. These results come from one asset and one market path and are preliminary.</p>
-          <div class="ccs-concepts"><h4>CCS Concepts</h4><p>LLM Memory; Reinforcement Learning; Quantitative Finance.</p></div>
-        </div>
-        <p class="research-status">Working paper · Ongoing research on daily Ethereum trading data.</p>
-      </section>
+</div>
+</article>
+<article class="projectCard">
+<div class="projectThumb">
+<img alt="Claude NYU × Columbia Hack project header" decoding="async" height="450" loading="lazy" src="assets/claude-nyu-columbia-hack.png" width="800"/>
+</div>
+<div class="projectBody">
+<h3 class="projectTitle">Claude NYU × Columbia Hack</h3>
+<div class="place">Hackathon • Rapid Prototyping</div>
+<p class="projectNote">Built an agentic, local-first memory layer that captures how you research/shop/learn (clicks, dwell time, scroll, queries) and exports portable memory files you can reuse across agents/providers.</p>
+<div aria-label="Project links" class="projectMeta">
+<a class="projectLink" href="https://github.com/nidhish1/nyuXcolumbiaHack" rel="noreferrer" target="_blank">GitHub</a>
+</div>
+</div>
+</article>
+<article class="projectCard">
+<div class="projectThumb">
+<img alt="Foundation of Robotics project screenshot" decoding="async" height="450" loading="lazy" src="assets/foundation-of-robotics.png" width="800"/>
+</div>
+<div class="projectBody">
+<h3 class="projectTitle">Robotics Fundamentals</h3>
+<div class="place">Robotics • Coursework / Notes</div>
+<p class="projectNote">Worked through core robotics fundamentals including Denavit–Hartenberg (DH) parameters for forward kinematics and Lagrangian dynamics for deriving equations of motion (e.g., manipulators).</p>
+<div aria-label="Project links" class="projectMeta">
+<a class="projectLink" href="https://github.com/nidhish1/foundation-of-robotics" rel="noreferrer" target="_blank">GitHub</a>
+</div>
+</div>
+</article>
+</div>
+</section><section aria-label="Skills" class="card" id="skills"><h2 class="section-heading">Skills</h2><dl class="skills-list"><div><dt>Machine Learning &amp; AI</dt><dd>PyTorch, Scikit-learn, Pandas, NumPy, RAG Pipelines, OpenAI API, LangGraph, LangChain, BigQuery</dd></div><div><dt>Backend &amp; Infrastructure</dt><dd>Go, Python, SQL, Kafka, Spark, Docker, Kubernetes, AWS, GCP, Azure, REST APIs, Microservices, CI/CD</dd></div></dl></section><section aria-label="Education" class="card" id="education">
+<h2 class="section-heading">Education</h2>
+<article class="entry"><p class="dates">Aug 2025 – Present</p><div class="entry-content"><h3>MS Computer Engineering (AI track)</h3><p class="place">New York University</p></div></article><article class="entry"><p class="dates">Jun 2016 – May 2020</p><div class="entry-content"><h3>B.Tech Computer Science</h3><p class="place">Vellore Institute of Technology</p></div></article>
+</section></main>
 
-      <section class="grid" aria-label="Main content">
-        <div class="twoCol">
-          <section class="card" id="work" aria-label="Experience">
-            <h3>Experience</h3>
-
-            <article class="item">
-              <div class="row">
-                <div>
-                  <div class="role">Senior Engineer</div>
-                  <div class="place">Mudrex (Y Combinator) • AI Team</div>
-                </div>
-                <div class="dates">Jun 2024 — Sept 2025</div>
-              </div>
-              <ul class="bullets">
-                <li>Designed and implemented a multi-agent system for portfolio analytics using <b>LangGraph</b> and <b>LangChain</b>, with discrete agents for real-time ingestion and grounded financial analysis.</li>
-                <li>Built a backend pricing service aggregating and normalizing market data into <b>TimescaleDB</b>, plus <b>WebSocket</b> streams to feed live prices into TradingView charts.</li>
-                <li>Built a production-grade <b>Solana</b> payment gateway with multi-RPC failover (Helius/QuickNode), dynamic priority fees, and transaction finality tracking for reliable settlements.</li>
-                <li>Shipped real-time monitoring and alerting using <b>Prometheus</b> and <b>Grafana</b> for 24/7 reliability across the gateway and pricing services.</li>
-              </ul>
-            </article>
-
-            <article class="item">
-              <div class="row">
-                <div>
-                  <div class="role">Software Engineer 2</div>
-                  <div class="place">Swiggy (India) • Payments Team</div>
-                </div>
-                <div class="dates">Sept 2023 — Apr 2024</div>
-              </div>
-              <ul class="bullets">
-                <li>Contributed to a high-scale payments system processing <b>1.1M+</b> transactions/day; implemented idempotent workflows, retries, and timeout handling to reduce failures in distributed systems.</li>
-                <li>Executed a zero-downtime migration to <b>DynamoDB</b> using a dual-write strategy from RDS; redesigned schema for high-concurrency writes to eliminate scale issues during peaks.</li>
-                <li>Implemented <b>Kafka</b>-based event processing with Redis-backed idempotency and <b>gRPC</b> services for reliable payment processing.</li>
-                <li>On-call ownership for payment services: debugged production issues and shipped fixes with minimal customer impact.</li>
-              </ul>
-            </article>
-
-            <article class="item">
-              <div class="row">
-                <div>
-                  <div class="role">Software Engineer</div>
-                  <div class="place">KreditBee (India)</div>
-                </div>
-                <div class="dates">Nov 2020 — Aug 2023</div>
-              </div>
-              <ul class="bullets">
-                <li>Worked on the Loan Management System on <b>AWS Lambda</b>, contributing to event-driven workflows using <b>Kafka</b> as the platform scaled ~<b>5×</b>.</li>
-                <li>Built an automated secrets rotation pipeline using <b>AWS KMS/HSM</b>, removing hardcoded keys and enforcing secure credential usage across services.</li>
-                <li>Built an error detection module to identify failed/inconsistent loan transactions via rule-based checks, improving data correctness and operational visibility.</li>
-              </ul>
-            </article>
-          </section>
-
-          <section class="card" id="projects" aria-label="Projects">
-            <h3>Selected Projects</h3>
-
-            <div class="projectsGrid" aria-label="Project cards">
-              <article class="projectCard">
-                <div class="projectThumb">
-                  <img src="assets/rl-bullet-drones.png" alt="RL Bullet Drones simulation screenshot" />
-                </div>
-                <div class="projectBody">
-                  <h4 class="projectTitle">RL Bullet Drones</h4>
-                  <div class="place">Reinforcement Learning • Drones</div>
-                  <p class="projectNote">Built a PyBullet-based RL environment to train and evaluate drone navigation/control policies. Designed observation and action spaces, reward shaping, and a repeatable evaluation setup to compare policies across tasks and conditions.</p>
-                  <div class="projectMeta" aria-label="Project links">
-                    <a class="projectLink" href="https://github.com/nidhish1/bullet-drones" target="_blank" rel="noreferrer">GitHub ↗</a>
-                  </div>
-                </div>
-              </article>
-
-              <article class="projectCard">
-                <div class="projectThumb">
-                  <img src="assets/llm-fine-tune.png" alt="LLM fine-tuning project graphic" />
-                </div>
-                <div class="projectBody">
-                  <h4 class="projectTitle">LLM Fine-Tuning (Qwen 2.5B) — SVG Generation</h4>
-                  <div class="place">LLM Fine-tuning • Structured Generation</div>
-                  <p class="projectNote">Fine-tuned <b>Qwen 2.5B</b> for SVG generation; built an ML pipeline and training infra on <b>4× A100</b> GPUs. Published the model for reuse.</p>
-                  <div class="projectMeta" aria-label="Project links">
-                    <a class="projectLink" href="https://www.kaggle.com/models/nidhish1010/finetune-svg-ng" target="_blank" rel="noreferrer">Published Model ↗</a>
-                  </div>
-                </div>
-              </article>
-
-              <article class="projectCard">
-                <div class="projectThumb">
-                  <img src="assets/nemotron-header.png" alt="NVIDIA Nemotron challenge header" />
-                </div>
-                <div class="projectBody">
-                  <h4 class="projectTitle">NVIDIA Nemotron Model Reasoning Challenge</h4>
-                  <div class="place">LLM Reasoning • Evaluation</div>
-                  <p class="projectNote">Worked on the NVIDIA Nemotron reasoning challenge, exploring reinforcement learning approaches and lightweight fine-tuning methods to improve reasoning quality and robustness.</p>
-                  <div class="projectMeta" aria-label="Project links">
-                    <a class="projectLink" href="#" target="_blank" rel="noreferrer">Link ↗</a>
-                  </div>
-                </div>
-              </article>
-
-              <article class="projectCard">
-                <div class="projectThumb">
-                  <img src="assets/claude-nyu-columbia-hack.png" alt="Claude NYU × Columbia Hack project header" />
-                </div>
-                <div class="projectBody">
-                  <h4 class="projectTitle">Claude NYU × Columbia Hack</h4>
-                  <div class="place">Hackathon • Rapid Prototyping</div>
-                  <p class="projectNote">Built an agentic, local-first memory layer that captures how you research/shop/learn (clicks, dwell time, scroll, queries) and exports portable memory files you can reuse across agents/providers.</p>
-                  <div class="projectMeta" aria-label="Project links">
-                    <a class="projectLink" href="https://github.com/nidhish1/nyuXcolumbiaHack" target="_blank" rel="noreferrer">GitHub ↗</a>
-                  </div>
-                </div>
-              </article>
-
-              <article class="projectCard">
-                <div class="projectThumb">
-                  <img src="assets/foundation-of-robotics.png" alt="Foundation of Robotics project screenshot" />
-                </div>
-                <div class="projectBody">
-                  <h4 class="projectTitle">Robotics Fundamentals</h4>
-                  <div class="place">Robotics • Coursework / Notes</div>
-                  <p class="projectNote">Worked through core robotics fundamentals including Denavit–Hartenberg (DH) parameters for forward kinematics and Lagrangian dynamics for deriving equations of motion (e.g., manipulators).</p>
-                  <div class="projectMeta" aria-label="Project links">
-                    <a class="projectLink" href="https://github.com/nidhish1/foundation-of-robotics" target="_blank" rel="noreferrer">GitHub ↗</a>
-                  </div>
-                </div>
-              </article>
-
-            </div>
-          </section>
-        </div>
-
-        <aside class="mini" aria-label="Sidebar">
-          <section class="card" id="skills" aria-label="Skills">
-            <h3>Skills</h3>
-            <div class="place" style="margin:0 0 10px">Machine Learning &amp; AI</div>
-            <div class="chips" aria-label="Machine learning and AI skills">
-              <span class="chip">PyTorch</span>
-              <span class="chip">Scikit-learn</span>
-              <span class="chip">Pandas</span>
-              <span class="chip">NumPy</span>
-              <span class="chip">RAG Pipelines</span>
-              <span class="chip">OpenAI API</span>
-              <span class="chip">LangGraph</span>
-              <span class="chip">LangChain</span>
-              <span class="chip">BigQuery</span>
-            </div>
-
-            <div class="place" style="margin:14px 0 10px">Backend &amp; Infrastructure</div>
-            <div class="chips" aria-label="Backend and infrastructure skills">
-              <span class="chip">Go</span>
-              <span class="chip">Python</span>
-              <span class="chip">SQL</span>
-              <span class="chip">Kafka</span>
-              <span class="chip">Spark</span>
-              <span class="chip">Docker</span>
-              <span class="chip">Kubernetes</span>
-              <span class="chip">AWS</span>
-              <span class="chip">GCP</span>
-              <span class="chip">Azure</span>
-              <span class="chip">REST APIs</span>
-              <span class="chip">Microservices</span>
-              <span class="chip">CI/CD</span>
-            </div>
-          </section>
-
-          <section class="card" aria-label="Education">
-            <h3>Education</h3>
-            <div class="kv">
-              <div class="line"><span class="k">MS</span><span>New York University — MS CE (AI track)</span></div>
-              <div class="line"><span class="k">Dates</span><span>Aug 2025 — Present</span></div>
-              <div class="line"><span class="k">BS</span><span>Vellore Institute of Technology — B.Tech CS</span></div>
-              <div class="line"><span class="k">Dates</span><span>Jun 2016 — May 2020</span></div>
-            </div>
-          </section>
-
-        </aside>
-      </section>
-    </main>
-
-    <footer class="footer" role="contentinfo">
-    </footer>
-  </div>
+</div>
 </body>
 </html>
+
