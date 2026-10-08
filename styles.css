@@ -1,12 +1,9 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --bg: #ffffff; --text: #20252b; --muted: #555e68; --line: #d4d9df;
   --surface: #f5f7f9; --link: #175699;
   --s1: 4px; --s2: 8px; --s3: 16px; --s4: 24px; --s5: 40px; --s6: 64px;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #171b20; --text: #e5e9ee; --muted: #b0bac5; --line: #424b56; --surface: #21272e; --link: #8fc5ff; }
 }
 * { box-sizing: border-box; }
 html { scroll-padding-top: 80px; }
